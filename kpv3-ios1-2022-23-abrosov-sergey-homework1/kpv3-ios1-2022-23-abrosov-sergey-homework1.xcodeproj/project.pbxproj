@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		63B74C8428CBE1C200BD4CD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B74C8328CBE1C200BD4CD7 /* AppDelegate.swift */; };
-		63B74C8628CBE1C200BD4CD7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B74C8528CBE1C200BD4CD7 /* SceneDelegate.swift */; };
 		63B74C8828CBE1C200BD4CD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B74C8728CBE1C200BD4CD7 /* ViewController.swift */; };
-		63B74C8B28CBE1C200BD4CD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B74C8928CBE1C200BD4CD7 /* Main.storyboard */; };
 		63B74C8D28CBE1C800BD4CD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63B74C8C28CBE1C800BD4CD7 /* Assets.xcassets */; };
 		63B74C9028CBE1C800BD4CD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B74C8E28CBE1C800BD4CD7 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -18,9 +16,7 @@
 /* Begin PBXFileReference section */
 		63B74C8028CBE1C200BD4CD7 /* kpv3-ios1-2022-23-abrosov-sergey-homework1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kpv3-ios1-2022-23-abrosov-sergey-homework1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		63B74C8328CBE1C200BD4CD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		63B74C8528CBE1C200BD4CD7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		63B74C8728CBE1C200BD4CD7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		63B74C8A28CBE1C200BD4CD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		63B74C8C28CBE1C800BD4CD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63B74C8F28CBE1C800BD4CD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63B74C9128CBE1C800BD4CD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -57,9 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				63B74C8328CBE1C200BD4CD7 /* AppDelegate.swift */,
-				63B74C8528CBE1C200BD4CD7 /* SceneDelegate.swift */,
 				63B74C8728CBE1C200BD4CD7 /* ViewController.swift */,
-				63B74C8928CBE1C200BD4CD7 /* Main.storyboard */,
 				63B74C8C28CBE1C800BD4CD7 /* Assets.xcassets */,
 				63B74C8E28CBE1C800BD4CD7 /* LaunchScreen.storyboard */,
 				63B74C9128CBE1C800BD4CD7 /* Info.plist */,
@@ -127,7 +121,6 @@
 			files = (
 				63B74C9028CBE1C800BD4CD7 /* LaunchScreen.storyboard in Resources */,
 				63B74C8D28CBE1C800BD4CD7 /* Assets.xcassets in Resources */,
-				63B74C8B28CBE1C200BD4CD7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,21 +133,12 @@
 			files = (
 				63B74C8828CBE1C200BD4CD7 /* ViewController.swift in Sources */,
 				63B74C8428CBE1C200BD4CD7 /* AppDelegate.swift in Sources */,
-				63B74C8628CBE1C200BD4CD7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		63B74C8928CBE1C200BD4CD7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				63B74C8A28CBE1C200BD4CD7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		63B74C8E28CBE1C800BD4CD7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -294,7 +278,6 @@
 				INFOPLIST_FILE = "kpv3-ios1-2022-23-abrosov-sergey-homework1/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -322,7 +305,6 @@
 				INFOPLIST_FILE = "kpv3-ios1-2022-23-abrosov-sergey-homework1/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
