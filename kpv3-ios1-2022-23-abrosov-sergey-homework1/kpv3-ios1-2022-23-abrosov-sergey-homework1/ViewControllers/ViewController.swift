@@ -6,9 +6,16 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            
-        mainView.frame = self.view.bounds
+        
+        mainView.frame = view.bounds
         view.addSubview(mainView)
+        mainView.backgroundColor = .systemGreen
+        
+        mainView.creatingInterfaceElements()
+        mainView.addParametersForElements()
+        mainView.addConnectForElements()
+        mainView.addElementsToView()
+        mainView.addConstraintsForElements()
     }
     
 }

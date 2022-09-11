@@ -2,6 +2,4 @@ import UIKit
 
 extension ViewController {
     
-    
-    
 }
