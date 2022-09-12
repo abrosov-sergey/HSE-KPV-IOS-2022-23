@@ -90,23 +90,23 @@ class VieViewController: UIView {
     }
     
     @objc func buttonAction(sender: UIButton!) {
-       let buttonSendTag: UIButton = sender
-    
-       if buttonSendTag.tag == 1 {
-           for i in 0..<cntViews {
-               listOfViews[i].layer.cornerRadius = Double.random(in: 0.0...50.0)
-               
-               //let color = UIColor(red: 0xFF, green: 0xFF, blue: 0xFF)
-               let red = Int.random(in: 0...255)
-               let green = Int.random(in: 0...255)
-               let blue = Int.random(in: 0...255)
-               
-               let rgb: Int = (Int)(red * 255) << 16 | (Int)(green * 255) << 8 | (Int)(blue * 255) << 0
-               
-               [UIView .animate(withDuration: 2.0, animations: { [self] in
-                   self.listOfViews[i].backgroundColor = UIColor(rgb: rgb)
-               })]
-           }
-       }
+        let buttonSendTag: UIButton = sender
+        
+        if buttonSendTag.tag == 1 {
+            [UIView .animate(withDuration: 2.0, animations: { [self] in
+                for i in 0..<cntViews {
+                    listOfViews[i].layer.cornerRadius = Double.random(in: 0.0...50.0)
+                    
+                    //let color = UIColor(red: 0xFF, green: 0xFF, blue: 0xFF)
+                    let red = Int.random(in: 0...255)
+                    let green = Int.random(in: 0...255)
+                    let blue = Int.random(in: 0...255)
+                    
+                    let rgb: Int = (Int)(red * 255) << 16 | (Int)(green * 255) << 8 | (Int)(blue * 255) << 0
+                    
+                    self.listOfViews[i].backgroundColor = UIColor(rgb: rgb)
+                }
+            })]
+        }
     }
 }
