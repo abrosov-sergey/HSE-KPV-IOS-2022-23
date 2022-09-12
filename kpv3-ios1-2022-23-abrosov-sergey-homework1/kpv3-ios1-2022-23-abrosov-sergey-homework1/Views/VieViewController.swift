@@ -22,7 +22,7 @@ class VieViewController: UIView {
         buttonThatChangingParameters.setTitle("Press to change color and corner radius", for: .normal)
         buttonThatChangingParameters.backgroundColor = .systemGray
         buttonThatChangingParameters.tag = 1
-        buttonThatChangingParameters.layer.cornerRadius = 10
+        buttonThatChangingParameters.layer.cornerRadius = 20
     }
     
     func addConnectForElements() {
@@ -53,7 +53,7 @@ class VieViewController: UIView {
         listOfViews[0].widthAnchor.constraint(equalToConstant: 125).isActive = true
         listOfViews[0].heightAnchor.constraint(equalToConstant: 300).isActive = true
         
-        listOfViews[1].leftAnchor.constraint(equalTo: self.leftAnchor, constant: 200).isActive = true
+        listOfViews[1].leftAnchor.constraint(equalTo: self.leftAnchor, constant: 170).isActive = true
         listOfViews[1].rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
         listOfViews[1].topAnchor.constraint(equalTo: self.topAnchor, constant: 70).isActive = true
         listOfViews[1].heightAnchor.constraint(equalToConstant: 300).isActive = true
@@ -86,15 +86,24 @@ class VieViewController: UIView {
         buttonThatChangingParameters.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
         buttonThatChangingParameters.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
         buttonThatChangingParameters.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -30).isActive = true
-        buttonThatChangingParameters.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        buttonThatChangingParameters.heightAnchor.constraint(equalToConstant: 60).isActive = true
     }
     
     @objc func buttonAction(sender: UIButton!) {
-       let btnsendtag: UIButton = sender
+       let buttonSendTag: UIButton = sender
     
-       if btnsendtag.tag == 1 {
+       if buttonSendTag.tag == 1 {
            for i in 0..<cntViews {
-               listOfViews[i].backgroundColor = .systemBlue
+               listOfViews[i].layer.cornerRadius = Double.random(in: 0.0...50.0)
+               
+               //let color = UIColor(red: 0xFF, green: 0xFF, blue: 0xFF)
+               let red = Int.random(in: 0...255)
+               let green = Int.random(in: 0...255)
+               let blue = Int.random(in: 0...255)
+               
+               let rgb: Int = (Int)(red * 255) << 16 | (Int)(green * 255) << 8 | (Int)(blue * 255) << 0
+               
+               listOfViews[i].backgroundColor = UIColor(rgb: rgb)
            }
        }
     }

@@ -10,6 +10,7 @@
 		6339DC2528CC94A4004AF7E9 /* ExtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6339DC2428CC94A4004AF7E9 /* ExtViewController.swift */; };
 		6339DC2828CC9766004AF7E9 /* VieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6339DC2728CC9766004AF7E9 /* VieViewController.swift */; };
 		6339DC2A28CC99B1004AF7E9 /* ModViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6339DC2928CC99B1004AF7E9 /* ModViewController.swift */; };
+		638C85E528CF02E8004B2CBA /* ExtUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638C85E428CF02E8004B2CBA /* ExtUIColor.swift */; };
 		63B74C8428CBE1C200BD4CD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B74C8328CBE1C200BD4CD7 /* AppDelegate.swift */; };
 		63B74C8828CBE1C200BD4CD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B74C8728CBE1C200BD4CD7 /* ViewController.swift */; };
 		63B74C8D28CBE1C800BD4CD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63B74C8C28CBE1C800BD4CD7 /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 		6339DC2428CC94A4004AF7E9 /* ExtViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtViewController.swift; sourceTree = "<group>"; };
 		6339DC2728CC9766004AF7E9 /* VieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VieViewController.swift; sourceTree = "<group>"; };
 		6339DC2928CC99B1004AF7E9 /* ModViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModViewController.swift; sourceTree = "<group>"; };
+		638C85E428CF02E8004B2CBA /* ExtUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtUIColor.swift; sourceTree = "<group>"; };
 		63B74C8028CBE1C200BD4CD7 /* kpv3-ios1-2022-23-abrosov-sergey-homework1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kpv3-ios1-2022-23-abrosov-sergey-homework1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		63B74C8328CBE1C200BD4CD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63B74C8728CBE1C200BD4CD7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				6339DC2428CC94A4004AF7E9 /* ExtViewController.swift */,
+				638C85E428CF02E8004B2CBA /* ExtUIColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 				63B74C8828CBE1C200BD4CD7 /* ViewController.swift in Sources */,
 				6339DC2A28CC99B1004AF7E9 /* ModViewController.swift in Sources */,
 				63B74C8428CBE1C200BD4CD7 /* AppDelegate.swift in Sources */,
+				638C85E528CF02E8004B2CBA /* ExtUIColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
