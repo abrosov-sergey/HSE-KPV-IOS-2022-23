@@ -4,6 +4,7 @@ class VieViewController: UIView {
 
     var listOfViews: [UIView] = []
     var buttonThatChangingParameters: UIButton = UIButton()
+    var listOf
     
     let cntViews = 7
     
@@ -25,6 +26,7 @@ class VieViewController: UIView {
     func addConnectForElements() {
         let zeroViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
         listOfViews[0].addGestureRecognizer(zeroViewTapGesture)
+        zeroViewTapGesture.view?.tag = 0
         
         buttonThatChangingParameters.addTarget(
             self,
@@ -114,7 +116,7 @@ class VieViewController: UIView {
     }
     
     @objc func handleTap(sender: UITapGestureRecognizer) {
-        self.listOfViews[0].layer.cornerRadius = Double.random(in: 0.0...50.0)
-        self.listOfViews[0].backgroundColor = getHEXColor()
+            self.listOfViews[sender.view?.tag].layer.cornerRadius = Double.random(in: 0.0...50.0)
+            self.listOfViews[sender.view?.tag].backgroundColor = getHEXColor()
     }
 }
