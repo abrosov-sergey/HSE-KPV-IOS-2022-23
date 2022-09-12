@@ -4,19 +4,22 @@ class VieViewController: UIView {
 
     var listOfViews: [UIView] = []
     var buttonThatChangingParameters: UIButton = UIButton()
-    var listOf
+    var listOfTouches: [UITapGestureRecognizer] = []
     
     let cntViews = 7
     
     func creatingInterfaceElements() {
         listOfViews = []
-        for i in 0..<cntViews {
+        for _ in 0..<cntViews {
             listOfViews.append(UIView())
-            listOfViews[i].tag = i
         }
     }
     
     func addParametersForElements() {
+        for i in 0..<cntViews {
+            listOfViews[i].tag = i
+        }
+        
         buttonThatChangingParameters.setTitle("Press to change color and corner radius", for: .normal)
         buttonThatChangingParameters.backgroundColor = .systemGray
         buttonThatChangingParameters.tag = 1
@@ -24,9 +27,12 @@ class VieViewController: UIView {
     }
     
     func addConnectForElements() {
-        let zeroViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
-        listOfViews[0].addGestureRecognizer(zeroViewTapGesture)
-        zeroViewTapGesture.view?.tag = 0
+        for i in 0..<cntViews {
+            listOfTouches.append(UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:))))
+            listOfTouches[i].self.view?.tag = i
+            
+            listOfViews[i].addGestureRecognizer(listOfTouches[i])
+        }
         
         buttonThatChangingParameters.addTarget(
             self,
@@ -38,8 +44,8 @@ class VieViewController: UIView {
     }
     
     func addElementsToView() {
-        for element in listOfViews {
-            self.addSubview(element)
+        for i in 0..<cntViews {
+            self.addSubview(listOfViews[i])
         }
         
         self.addSubview(buttonThatChangingParameters)
@@ -116,7 +122,7 @@ class VieViewController: UIView {
     }
     
     @objc func handleTap(sender: UITapGestureRecognizer) {
-            self.listOfViews[sender.view?.tag].layer.cornerRadius = Double.random(in: 0.0...50.0)
-            self.listOfViews[sender.view?.tag].backgroundColor = getHEXColor()
+        self.listOfViews[sender.view!.tag ].layer.cornerRadius = Double.random(in: 0.0...50.0)
+        self.listOfViews[sender.view!.tag ].backgroundColor = getHEXColor()
     }
 }
