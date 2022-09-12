@@ -26,6 +26,8 @@ class VieViewController: UIView {
     }
     
     func addConnectForElements() {
+//        [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(myMethod) userInfo:nil repeats:NO];
+        
         buttonThatChangingParameters.addTarget(
             self,
             action: #selector(buttonAction),
@@ -89,8 +91,12 @@ class VieViewController: UIView {
         buttonThatChangingParameters.heightAnchor.constraint(equalToConstant: 60).isActive = true
     }
     
-    @objc func buttonAction(sender: UIButton!) {
-        let buttonSendTag: UIButton = sender
+    @objc func buttonAction(buttonSendTag: UIButton!) {
+        buttonThatChangingParameters.isUserInteractionEnabled = false
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+            self.buttonThatChangingParameters.isUserInteractionEnabled = true
+        }
         
         if buttonSendTag.tag == 1 {
             [UIView .animate(withDuration: 2.0, animations: { [self] in
