@@ -26,8 +26,6 @@ class VieViewController: UIView {
     }
     
     func addConnectForElements() {
-//        [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(myMethod) userInfo:nil repeats:NO];
-        
         buttonThatChangingParameters.addTarget(
             self,
             action: #selector(buttonAction),
@@ -99,11 +97,11 @@ class VieViewController: UIView {
         }
         
         if buttonSendTag.tag == 1 {
-            [UIView .animate(withDuration: 2.0, animations: { [self] in
-                for i in 0..<cntViews {
-                    listOfViews[i].layer.cornerRadius = Double.random(in: 0.0...50.0)
+            UIView.animate(withDuration: 2.0) { [weak self] in
+                guard let self = self else { return }
+                for i in 0..<self.cntViews {
+                    self.listOfViews[i].layer.cornerRadius = Double.random(in: 0.0...50.0)
                     
-                    //let color = UIColor(red: 0xFF, green: 0xFF, blue: 0xFF)
                     let red = Int.random(in: 0...255)
                     let green = Int.random(in: 0...255)
                     let blue = Int.random(in: 0...255)
@@ -112,7 +110,7 @@ class VieViewController: UIView {
                     
                     self.listOfViews[i].backgroundColor = UIColor(rgb: rgb)
                 }
-            })]
+            }
         }
     }
 }
