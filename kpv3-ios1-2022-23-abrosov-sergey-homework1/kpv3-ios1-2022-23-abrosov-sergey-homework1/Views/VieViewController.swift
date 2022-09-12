@@ -9,8 +9,9 @@ class VieViewController: UIView {
     
     func creatingInterfaceElements() {
         listOfViews = []
-        for _ in 0..<cntViews {
+        for i in 0..<cntViews {
             listOfViews.append(UIView())
+            listOfViews[i].tag = i
         }
     }
     
@@ -22,6 +23,9 @@ class VieViewController: UIView {
     }
     
     func addConnectForElements() {
+        let zeroViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
+        listOfViews[0].addGestureRecognizer(zeroViewTapGesture)
+        
         buttonThatChangingParameters.addTarget(
             self,
             action: #selector(buttonAction),
@@ -107,5 +111,10 @@ class VieViewController: UIView {
                 }
             }
         }
+    }
+    
+    @objc func handleTap(sender: UITapGestureRecognizer) {
+        self.listOfViews[0].layer.cornerRadius = Double.random(in: 0.0...50.0)
+        self.listOfViews[0].backgroundColor = getHEXColor()
     }
 }
