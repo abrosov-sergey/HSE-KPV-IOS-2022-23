@@ -15,10 +15,6 @@ class VieViewController: UIView {
     }
     
     func addParametersForElements() {
-        for i in 0..<cntViews {
-            listOfViews[i].backgroundColor = .systemRed
-        }
-                
         buttonThatChangingParameters.setTitle("Press to change color and corner radius", for: .normal)
         buttonThatChangingParameters.backgroundColor = .systemGray
         buttonThatChangingParameters.tag = 1
@@ -31,11 +27,13 @@ class VieViewController: UIView {
             action: #selector(buttonAction),
             for: .touchUpInside
         )
+        
+        buttonAction(buttonSendTag: buttonThatChangingParameters)
     }
     
     func addElementsToView() {
-        for i in 0..<cntViews {
-            self.addSubview(listOfViews[i])
+        for element in listOfViews {
+            self.addSubview(element)
         }
         
         self.addSubview(buttonThatChangingParameters)
@@ -48,55 +46,59 @@ class VieViewController: UIView {
         
         buttonThatChangingParameters.translatesAutoresizingMaskIntoConstraints = false
         
-        listOfViews[0].leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-        listOfViews[0].topAnchor.constraint(equalTo: self.topAnchor, constant: 70).isActive = true
-        listOfViews[0].widthAnchor.constraint(equalToConstant: 125).isActive = true
-        listOfViews[0].heightAnchor.constraint(equalToConstant: 300).isActive = true
+        let leftRightConstraint = 1 / 40 * self.bounds.width
+        let mainWidth = self.bounds.width
+        let mainHeight = self.bounds.height
         
-        listOfViews[1].leftAnchor.constraint(equalTo: self.leftAnchor, constant: 170).isActive = true
-        listOfViews[1].rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
-        listOfViews[1].topAnchor.constraint(equalTo: self.topAnchor, constant: 70).isActive = true
-        listOfViews[1].heightAnchor.constraint(equalToConstant: 300).isActive = true
+        listOfViews[0].leftAnchor.constraint(equalTo: self.leftAnchor, constant: leftRightConstraint).isActive = true
+        listOfViews[0].rightAnchor.constraint(equalTo: self.rightAnchor, constant: -2 / 3 * mainWidth).isActive = true
+        listOfViews[0].topAnchor.constraint(equalTo: self.topAnchor, constant: 1 / 15 * mainHeight).isActive = true
+        listOfViews[0].heightAnchor.constraint(equalToConstant: 1 / 3 * mainHeight).isActive = true
         
-        listOfViews[2].leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-        listOfViews[2].rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
+        listOfViews[1].leftAnchor.constraint(equalTo: self.leftAnchor, constant: 2 / 5 * mainWidth).isActive = true
+        listOfViews[1].rightAnchor.constraint(equalTo: self.rightAnchor, constant: -leftRightConstraint).isActive = true
+        listOfViews[1].topAnchor.constraint(equalTo: self.topAnchor, constant: 1 / 15 * mainHeight).isActive = true
+        listOfViews[1].heightAnchor.constraint(equalToConstant: 1 / 3 * mainHeight).isActive = true
+        
+        listOfViews[2].leftAnchor.constraint(equalTo: self.leftAnchor, constant: leftRightConstraint).isActive = true
+        listOfViews[2].rightAnchor.constraint(equalTo: self.rightAnchor, constant: -leftRightConstraint).isActive = true
         listOfViews[2].centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        listOfViews[2].heightAnchor.constraint(equalToConstant: 80).isActive = true
+        listOfViews[2].heightAnchor.constraint(equalToConstant: 1 / 10 * mainHeight).isActive = true
         
-        listOfViews[3].leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-        listOfViews[3].rightAnchor.constraint(equalTo: self.rightAnchor, constant: -200).isActive = true
-        listOfViews[3].bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -290).isActive = true
-        listOfViews[3].heightAnchor.constraint(equalToConstant: 80).isActive = true
+        listOfViews[3].leftAnchor.constraint(equalTo: self.leftAnchor, constant: 2 / 3 * mainWidth).isActive = true
+        listOfViews[3].rightAnchor.constraint(equalTo: self.rightAnchor, constant: -leftRightConstraint).isActive = true
+        listOfViews[3].topAnchor.constraint(equalTo: self.topAnchor, constant: 4.2 / 7 * mainHeight).isActive = true
+        listOfViews[3].heightAnchor.constraint(equalToConstant: 1 / 4 * mainHeight).isActive = true
         
-        listOfViews[4].leftAnchor.constraint(equalTo: self.leftAnchor, constant: 250).isActive = true
-        listOfViews[4].rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
-        listOfViews[4].bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -150).isActive = true
-        listOfViews[4].heightAnchor.constraint(equalToConstant: 220).isActive = true
+        listOfViews[4].leftAnchor.constraint(equalTo: self.leftAnchor, constant: leftRightConstraint).isActive = true
+        listOfViews[4].rightAnchor.constraint(equalTo: self.rightAnchor, constant: -2 / 5 * mainWidth).isActive = true
+        listOfViews[4].topAnchor.constraint(equalTo: self.topAnchor, constant: 4.2 / 7 * mainHeight).isActive = true
+        listOfViews[4].heightAnchor.constraint(equalToConstant: 1 / 8 * mainHeight).isActive = true
+
+        listOfViews[5].leftAnchor.constraint(equalTo: self.leftAnchor, constant: leftRightConstraint).isActive = true
+        listOfViews[5].rightAnchor.constraint(equalTo: self.rightAnchor, constant: -3.5 / 5 * mainWidth).isActive = true
+        listOfViews[5].topAnchor.constraint(equalTo: self.topAnchor, constant: 5.2 / 7 * mainHeight).isActive = true
+        listOfViews[5].heightAnchor.constraint(equalToConstant: 1 / 8 * mainHeight).isActive = true
+
+        listOfViews[6].leftAnchor.constraint(equalTo: self.leftAnchor, constant: 2 / 5 * mainWidth).isActive = true
+        listOfViews[6].rightAnchor.constraint(equalTo: self.rightAnchor, constant: -2 / 5 * mainWidth).isActive = true
+        listOfViews[6].topAnchor.constraint(equalTo: self.topAnchor, constant: 5.2 / 7 * mainHeight).isActive = true
+        listOfViews[6].heightAnchor.constraint(equalToConstant: 1 / 8 * mainHeight).isActive = true
         
-        listOfViews[5].leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-        listOfViews[5].rightAnchor.constraint(equalTo: self.rightAnchor, constant: -350).isActive = true
-        listOfViews[5].bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -150).isActive = true
-        listOfViews[5].heightAnchor.constraint(equalToConstant: 100).isActive = true
-        
-        listOfViews[6].leftAnchor.constraint(equalTo: self.leftAnchor, constant: 100).isActive = true
-        listOfViews[6].rightAnchor.constraint(equalTo: self.rightAnchor, constant: -200).isActive = true
-        listOfViews[6].bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -150).isActive = true
-        listOfViews[6].heightAnchor.constraint(equalToConstant: 100).isActive = true
-        
-        buttonThatChangingParameters.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-        buttonThatChangingParameters.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
-        buttonThatChangingParameters.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -30).isActive = true
-        buttonThatChangingParameters.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        buttonThatChangingParameters.leftAnchor.constraint(equalTo: self.leftAnchor, constant: leftRightConstraint).isActive = true
+        buttonThatChangingParameters.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -leftRightConstraint).isActive = true
+        buttonThatChangingParameters.topAnchor.constraint(equalTo: self.topAnchor, constant: 10 / 11 * mainHeight).isActive = true
+        buttonThatChangingParameters.heightAnchor.constraint(equalToConstant: 1 / 15 * mainHeight).isActive = true
     }
     
-    @objc func buttonAction(buttonSendTag: UIButton!) {
+    @objc func buttonAction(buttonSendTag: UIButton?) {
         buttonThatChangingParameters.isUserInteractionEnabled = false
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
             self.buttonThatChangingParameters.isUserInteractionEnabled = true
         }
         
-        if buttonSendTag.tag == 1 {
+        if buttonSendTag?.tag == 1 {
             UIView.animate(withDuration: 2.0) { [weak self] in
                 guard let self = self else { return }
                 for i in 0..<self.cntViews {
