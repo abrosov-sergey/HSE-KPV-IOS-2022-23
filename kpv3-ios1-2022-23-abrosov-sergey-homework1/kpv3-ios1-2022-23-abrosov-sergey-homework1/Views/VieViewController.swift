@@ -103,14 +103,7 @@ class VieViewController: UIView {
                 guard let self = self else { return }
                 for i in 0..<self.cntViews {
                     self.listOfViews[i].layer.cornerRadius = Double.random(in: 0.0...50.0)
-                    
-                    let red = Int.random(in: 0...255)
-                    let green = Int.random(in: 0...255)
-                    let blue = Int.random(in: 0...255)
-                    
-                    let rgb: Int = (Int)(red * 255) << 16 | (Int)(green * 255) << 8 | (Int)(blue * 255) << 0
-                    
-                    self.listOfViews[i].backgroundColor = UIColor(rgb: rgb)
+                    self.listOfViews[i].backgroundColor = getHEXColor()
                 }
             }
         }
