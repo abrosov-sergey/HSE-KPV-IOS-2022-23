@@ -103,7 +103,9 @@ class VieViewController: UIView {
                
                let rgb: Int = (Int)(red * 255) << 16 | (Int)(green * 255) << 8 | (Int)(blue * 255) << 0
                
-               listOfViews[i].backgroundColor = UIColor(rgb: rgb)
+               [UIView .animate(withDuration: 2.0, animations: { [self] in
+                   self.listOfViews[i].backgroundColor = UIColor(rgb: rgb)
+               })]
            }
        }
     }
