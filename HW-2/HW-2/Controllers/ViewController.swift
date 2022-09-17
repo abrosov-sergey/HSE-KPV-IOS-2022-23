@@ -1,14 +1,14 @@
 import UIKit
 
 final class ViewController: UIViewController {
-    
+
     private let commentLabel = UILabel()
     private let valueLabel = UILabel()
-    
+
     private let incrementButton = UIButton()
-    
-    private let value: Int = 0
-    
+
+    private var value: Int = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,44 +25,131 @@ extension ViewController {
         incrementButton.titleLabel?.font = .systemFont(ofSize:
         16.0, weight: .medium)
         incrementButton.backgroundColor = .white
-        
-        incrementButton.layer.applyShadow()
-        
+
+        // incrementButton.layer.applyShadow()
+
         self.view.addSubview(incrementButton)
-        
-        incrementButton.setHeight(to: 48)
-        incrementButton.pinTop(to: self.view.centerYAnchor)
-        incrementButton.pin(to: self.view,
-                                [
-                                    .left: 24,
-                                    .right:
-                                        
-                                        incrementButton.addTarget(self,
-                                                                  action: #selector(incrementButtonPressed),
-                                                                  for: .touchUpInside
-                                                                 )
+
+        // Need to add constraints for incrementButton
+
+        incrementButton.addTarget(self, action: #selector(incrementButtonPressed), for: .touchUpInside)
     }
-                                            
+
     private func setupValueLabel() {
-    valueLabel.font = .systemFont(ofSize: 40.0,
-    weight: .bold)
-    valueLabel.textColor = .black
-    valueLabel.text = "\(value)"
-    self.view.addSubview(valueLabel)
-    valueLabel.pinBottom(to: incrementButton.topAnchor, 16)
-    valueLabel.pinCenter(to: self.view.centerXAnchor)
+        valueLabel.font = .systemFont(ofSize: 40.0, weight: .bold)
+        valueLabel.textColor = .black
+        valueLabel.text = "\(value)"
+
+        self.view.addSubview(valueLabel)
+
+        // Need to add constraints for valueLabel
     }
-                                            
-                                            
+
     private func setupView() {
-    view.backgroundColor = .systemGray6
-    setupIncrementButton()
-    setupValueLabel()
+        view.backgroundColor = .systemGray6
+
+        setupIncrementButton()
+        setupValueLabel()
     }
-                                            
+
+    private func updateUI() {
+
+    }
+
+    private func setupCommentView() -> UIView {
+        let commentView = UIView()
+
+        commentView.backgroundColor = .white
+        commentView.layer.cornerRadius = 12
+
+        view.addSubview(commentView)
+
+        // Need to add constraints for commentView
+
+        commentLabel.font = .systemFont(ofSize: 14.0, weight: .regular)
+        commentLabel.textColor = .systemGray
+        commentLabel.numberOfLines = 0
+        commentLabel.textAlignment = .center
+
+        commentView.addSubview(commentLabel)
+
+        // Need to add constraints for commentLabel
+
+        return commentView
+    }
+
+    func updateCommentLabel(value: Int) {
+        switch value {
+        case 0...10:
+        commentLabel.text = "1"
+
+        case 10...20:
+        commentLabel.text = "2"
+
+        case 20...30:
+        commentLabel.text = "3"
+
+        case 30...40:
+        commentLabel.text = "4"
+
+        case 40...50:
+        commentLabel.text = "! ! ! ! ! ! ! ! ! "
+
+        case 50...60:
+        commentLabel.text = "big boy"
+
+        case 60...70:
+        commentLabel.text = "70 70 70 moreeeee"
+
+        case 70...80:
+        commentLabel.text = "⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ "
+
+        case 80...100:
+        commentLabel.text = "80+\n go higher!"
+
+        default:
+            break
+        }
+    }
+
+    private func makeMenuButton(title: String) -> UIButton {
+        let button = UIButton()
+
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.layer.cornerRadius = 12
+        button.titleLabel?.font = .systemFont(ofSize: 16.0, weight: .medium)
+        button.backgroundColor = .white
+        button.heightAnchor.constraint(equalTo: button.widthAnchor).isActive = true
+
+        return button
+    }
+
+    private func setupMenuButtons() {
+        let colorsButton = makeMenuButton(title: "#")
+        let notesButton = makeMenuButton(title: "$")
+        let newsButton = makeMenuButton(title: "%")
+
+        let buttonsSV = UIStackView(arrangedSubviews: [colorsButton, notesButton, newsButton])
+
+        buttonsSV.spacing = 12
+        buttonsSV.axis = .horizontal
+        buttonsSV.distribution = .fillEqually
+
+        self.view.addSubview(buttonsSV)
+
+        // Need to add constraints for buttonsSV
+    }
+
     @objc
     private func incrementButtonPressed() {
         value += 1
-        updateUI()
+
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
+
+        UIView.animate(withDuration: 1) {
+            self.updateUI()
+        }
     }
 }
