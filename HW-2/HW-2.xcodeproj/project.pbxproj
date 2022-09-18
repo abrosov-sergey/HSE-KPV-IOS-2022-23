@@ -11,6 +11,7 @@
 		6328A26028D5D5A300E50A89 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6328A25F28D5D5A300E50A89 /* ViewController.swift */; };
 		6328A26528D5D5A600E50A89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6328A26428D5D5A600E50A89 /* Assets.xcassets */; };
 		6328A26828D5D5A600E50A89 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6328A26628D5D5A600E50A89 /* LaunchScreen.storyboard */; };
+		639338E928D78596002F364C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 639338E828D78596002F364C /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				639338E928D78596002F364C /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +112,9 @@
 			dependencies = (
 			);
 			name = "HW-2";
+			packageProductDependencies = (
+				639338E828D78596002F364C /* SnapKit */,
+			);
 			productName = "HW-2";
 			productReference = 6328A25828D5D5A300E50A89 /* HW-2.app */;
 			productType = "com.apple.product-type.application";
@@ -138,6 +143,9 @@
 				Base,
 			);
 			mainGroup = 6328A24F28D5D5A300E50A89;
+			packageReferences = (
+				639338E728D78596002F364C /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 6328A25928D5D5A300E50A89 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -396,6 +404,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		639338E728D78596002F364C /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		639338E828D78596002F364C /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 639338E728D78596002F364C /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6328A25028D5D5A300E50A89 /* Project object */;
 }

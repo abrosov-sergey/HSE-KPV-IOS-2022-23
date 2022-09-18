@@ -1,4 +1,5 @@
 import UIKit
+import SnapKit
 
 final class ViewController: UIViewController {
 
@@ -11,6 +12,8 @@ final class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupIncrementButton()
 
         self.view.backgroundColor = .systemBlue
     }
@@ -31,6 +34,10 @@ extension ViewController {
         self.view.addSubview(incrementButton)
 
         // Need to add constraints for incrementButton
+        incrementButton.snp.makeConstraints { make in
+            make.left.right.equalToSuperview().inset(30)
+            make.centerX.centerY.equalToSuperview()
+        }
 
         incrementButton.addTarget(self, action: #selector(incrementButtonPressed), for: .touchUpInside)
     }
@@ -81,7 +88,7 @@ extension ViewController {
     func updateCommentLabel(value: Int) {
         switch value {
         case 0...10:
-        commentLabel.text = "1"
+        commentLabel.text = "1 "
 
         case 10...20:
         commentLabel.text = "2"
