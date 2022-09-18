@@ -12,8 +12,9 @@ final class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupIncrementButton()
+        setupValueLabel()
 
         self.view.backgroundColor = .systemBlue
     }
@@ -33,10 +34,10 @@ extension ViewController {
 
         self.view.addSubview(incrementButton)
 
-        // Need to add constraints for incrementButton
         incrementButton.snp.makeConstraints { make in
+            make.height.equalTo(48)
+            make.centerY.equalToSuperview()
             make.left.right.equalToSuperview().inset(30)
-            make.centerX.centerY.equalToSuperview()
         }
 
         incrementButton.addTarget(self, action: #selector(incrementButtonPressed), for: .touchUpInside)
@@ -49,7 +50,10 @@ extension ViewController {
 
         self.view.addSubview(valueLabel)
 
-        // Need to add constraints for valueLabel
+        valueLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(incrementButton.snp.top).inset(-16)
+            make.centerX.equalToSuperview().inset(20)
+        }
     }
 
     private func setupView() {
@@ -60,7 +64,7 @@ extension ViewController {
     }
 
     private func updateUI() {
-
+        valueLabel.text = "\(value)"
     }
 
     private func setupCommentView() -> UIView {
