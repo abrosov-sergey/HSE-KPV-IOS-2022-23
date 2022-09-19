@@ -3,6 +3,7 @@ import SnapKit
 
 final class ViewController: UIViewController {
 
+    private let commentView = UIView()
     private let commentLabel = UILabel()
     private let valueLabel = UILabel()
 
@@ -31,8 +32,6 @@ extension ViewController {
         incrementButton.titleLabel?.font = .systemFont(ofSize:
                                                         16.0, weight: .medium)
         incrementButton.backgroundColor = .white
-
-        // incrementButton.layer.applyShadow()
 
         self.view.addSubview(incrementButton)
 
@@ -68,11 +67,11 @@ extension ViewController {
     }
 
     private func updateUI() {
-        valueLabel.text = "\(value)"
+        self.valueLabel.text = "\(self.value)"
     }
 
     private func setupCommentView() /*-> UIView*/ {
-        let commentView = UIView()
+        
 
         commentView.backgroundColor = .white
         commentView.layer.cornerRadius = 12
@@ -85,7 +84,7 @@ extension ViewController {
             make.left.right.equalToSuperview().inset(24)
         }
 
-        commentLabel.font = .systemFont(ofSize: 14.0, weight: .regular)
+        commentLabel.font = .systemFont(ofSize: 30.0, weight: .regular)
         commentLabel.textColor = .systemGray
         commentLabel.numberOfLines = 0
         commentLabel.textAlignment = .center
@@ -101,37 +100,33 @@ extension ViewController {
     }
 
     func updateCommentLabel() {
-        switch value {
-        case 0...10:
-            commentLabel.text = "1 🔥"
-
-        case 10...20:
-            commentLabel.text = "2 💥"
-
-        case 20...30:
-            commentLabel.text = "3 ✨"
-
-        case 30...40:
-            commentLabel.text = "4 🦦"
-
-        case 40...50:
-            commentLabel.text = "🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉"
-
-        case 50...60:
-            commentLabel.text = "big boy"
-
-        case 60...70:
-            commentLabel.text = "70 70 70 moreeeee"
-
-        case 70...80:
-            commentLabel.text = "⭐⭐⭐⭐⭐⭐⭐⭐⭐"
-
-        case 80...100:
-            commentLabel.text = "80+\n go higher!"
-
-        default:
-            break
-        }
+        UIView.transition(with: commentLabel,
+                          duration: 4,
+                          options: .transitionCrossDissolve,
+                          animations: { [self] in
+            switch self.value {
+            case 0...5:
+                self.commentLabel.text = "🔥🔥🔥🔥🔥🔥🔥🔥"
+            case 5...10:
+                self.commentLabel.text = "💥💥💥💥💥💥💥💥"
+            case 10...15:
+                self.commentLabel.text = "✨✨✨✨✨✨✨✨"
+            case 15...40:
+                self.commentLabel.text = "🦦🦦🦦🦦🦦🦦🦦🦦"
+            case 40...50:
+                self.commentLabel.text = "🎉🎉🎉🎉🎉🎉🎉🎉"
+            case 50...60:
+                self.commentLabel.text = "big boy"
+            case 60...70:
+                self.commentLabel.text = "70 70 70 moreeeee"
+            case 70...80:
+                self.commentLabel.text = "⭐⭐⭐⭐⭐⭐⭐⭐⭐"
+            case 80...100:
+                self.commentLabel.text = "80+\n go higher!"
+            default:
+                break
+            }
+        }, completion: nil)
     }
 
     private func makeMenuButton(title: String) -> UIButton {
@@ -140,7 +135,7 @@ extension ViewController {
         button.setTitle(title, for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 12
-        button.titleLabel?.font = .systemFont(ofSize: 16.0, weight: .medium)
+        button.titleLabel?.font = .systemFont(ofSize: 35.0, weight: .medium)
         button.backgroundColor = .white
         button.heightAnchor.constraint(equalTo: button.widthAnchor).isActive = true
 
