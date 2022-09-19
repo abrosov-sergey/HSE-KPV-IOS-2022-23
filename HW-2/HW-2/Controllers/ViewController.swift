@@ -100,7 +100,7 @@ extension ViewController {
         // return commentView
     }
 
-    func updateCommentLabel(value: Int) {
+    func updateCommentLabel() {
         switch value {
         case 0...10:
             commentLabel.text = "1 🔥"
@@ -169,14 +169,19 @@ extension ViewController {
     @objc
     private func incrementButtonPressed() {
         value += 1
-
+        
+        incrementButton.isUserInteractionEnabled = false
+        
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
 
-        UIView.animate(withDuration: 1) {
+        UIView.animate(withDuration: 500) {
             self.updateUI()
+            self.updateCommentLabel()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.incrementButton.isUserInteractionEnabled = true
+            }
         }
-
-        self.updateCommentLabel(value: value)
     }
 }
