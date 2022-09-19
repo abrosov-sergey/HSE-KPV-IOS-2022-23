@@ -16,6 +16,7 @@ final class ViewController: UIViewController {
         setupIncrementButton()
         setupValueLabel()
         setupCommentView()
+        setupMenuButtons()
 
         self.view.backgroundColor = .systemBlue
     }
@@ -28,13 +29,14 @@ extension ViewController {
         incrementButton.setTitleColor(.black, for: .normal)
         incrementButton.layer.cornerRadius = 12
         incrementButton.titleLabel?.font = .systemFont(ofSize:
-        16.0, weight: .medium)
+                                                        16.0, weight: .medium)
         incrementButton.backgroundColor = .white
 
         // incrementButton.layer.applyShadow()
 
         self.view.addSubview(incrementButton)
 
+        incrementButton.translatesAutoresizingMaskIntoConstraints = false
         incrementButton.snp.makeConstraints { make in
             make.height.equalTo(48)
             make.centerY.equalToSuperview()
@@ -51,6 +53,7 @@ extension ViewController {
 
         self.view.addSubview(valueLabel)
 
+        valueLabel.translatesAutoresizingMaskIntoConstraints = false
         valueLabel.snp.makeConstraints { make in
             make.bottom.equalTo(incrementButton.snp.top).inset(-16)
             make.centerX.equalToSuperview().inset(20)
@@ -76,7 +79,7 @@ extension ViewController {
 
         view.addSubview(commentView)
 
-        // Need to add constraints for commentView
+        commentView.translatesAutoresizingMaskIntoConstraints = false
         commentView.snp.makeConstraints { make in
             make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
             make.left.right.equalToSuperview().inset(24)
@@ -89,42 +92,42 @@ extension ViewController {
 
         commentView.addSubview(commentLabel)
 
-        // Need to add constraints for commentLabel
-        commentView.snp.makeConstraints { make in
+        commentLabel.translatesAutoresizingMaskIntoConstraints = false
+        commentLabel.snp.makeConstraints { make in
             make.top.bottom.left.right.equalTo(commentView).inset(16)
         }
 
-        //return commentView
+        // return commentView
     }
 
     func updateCommentLabel(value: Int) {
         switch value {
         case 0...10:
-        commentLabel.text = "1 "
+            commentLabel.text = "1 🔥"
 
         case 10...20:
-        commentLabel.text = "2"
+            commentLabel.text = "2 💥"
 
         case 20...30:
-        commentLabel.text = "3"
+            commentLabel.text = "3 ✨"
 
         case 30...40:
-        commentLabel.text = "4"
+            commentLabel.text = "4 🦦"
 
         case 40...50:
-        commentLabel.text = "! ! ! ! ! ! ! ! ! "
+            commentLabel.text = "🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉"
 
         case 50...60:
-        commentLabel.text = "big boy"
+            commentLabel.text = "big boy"
 
         case 60...70:
-        commentLabel.text = "70 70 70 moreeeee"
+            commentLabel.text = "70 70 70 moreeeee"
 
         case 70...80:
-        commentLabel.text = "⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ "
+            commentLabel.text = "⭐⭐⭐⭐⭐⭐⭐⭐⭐"
 
         case 80...100:
-        commentLabel.text = "80+\n go higher!"
+            commentLabel.text = "80+\n go higher!"
 
         default:
             break
@@ -145,9 +148,9 @@ extension ViewController {
     }
 
     private func setupMenuButtons() {
-        let colorsButton = makeMenuButton(title: "#")
-        let notesButton = makeMenuButton(title: "$")
-        let newsButton = makeMenuButton(title: "%")
+        let colorsButton = makeMenuButton(title: "🎨")
+        let notesButton = makeMenuButton(title: "📝")
+        let newsButton = makeMenuButton(title: "📰")
 
         let buttonsSV = UIStackView(arrangedSubviews: [colorsButton, notesButton, newsButton])
 
@@ -157,7 +160,10 @@ extension ViewController {
 
         self.view.addSubview(buttonsSV)
 
-        // Need to add constraints for buttonsSV
+        buttonsSV.snp.makeConstraints { make in
+            make.left.right.equalToSuperview().inset(24)
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).inset(24)
+        }
     }
 
     @objc
@@ -170,5 +176,7 @@ extension ViewController {
         UIView.animate(withDuration: 1) {
             self.updateUI()
         }
+
+        self.updateCommentLabel(value: value)
     }
 }
