@@ -1,6 +1,11 @@
-Homework1: 
+Homework-1: kpv3-ios1-2022-23-abrosov-sergey-homework1
+Homework-2: HW-2
 
-Full info you can see in group "Videos"
+------------------------------------------------------
+Videos: Здесь находятся видео, где показано как работает весь функционал каждой дз.
+TZ-Homeworks: Условия дз.
 
-0-10 points realized.
-11-12 points realized -> added functional for touch on views
+------------------------------------------------------
+Presentation: SwiftLint and SnapKit for 30.09.2022
+
+
