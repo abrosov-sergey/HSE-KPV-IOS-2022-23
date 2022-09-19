@@ -167,21 +167,25 @@ extension ViewController {
     }
 
     @objc
-    private func incrementButtonPressed() {
+    private func incrementButtonPressed () {
         value += 1
-        
-        incrementButton.isUserInteractionEnabled = false
-        
+        incrementButton.isEnabled = false
+        incrementButton.alpha = 0.7
+
+        UIView.animate(withDuration: 0.65, animations: {
+            self.incrementButton.layer.shadowPath = UIBezierPath(rect: self.incrementButton.layer.bounds).cgPath
+            self.incrementButton.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
+            self.incrementButton.alpha = 1
+
+            self.updateUI()
+            self.updateCommentLabel()
+        }) { _ in
+            self.incrementButton.transform = CGAffineTransform(scaleX: 1, y: 1)
+            self.incrementButton.isEnabled = true
+        }
+
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
 
-        UIView.animate(withDuration: 500) {
-            self.updateUI()
-            self.updateCommentLabel()
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.incrementButton.isUserInteractionEnabled = true
-            }
-        }
     }
 }
