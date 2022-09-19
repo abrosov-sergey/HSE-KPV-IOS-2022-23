@@ -15,6 +15,7 @@ final class ViewController: UIViewController {
 
         setupIncrementButton()
         setupValueLabel()
+        setupCommentView()
 
         self.view.backgroundColor = .systemBlue
     }
@@ -67,7 +68,7 @@ extension ViewController {
         valueLabel.text = "\(value)"
     }
 
-    private func setupCommentView() -> UIView {
+    private func setupCommentView() /*-> UIView*/ {
         let commentView = UIView()
 
         commentView.backgroundColor = .white
@@ -76,6 +77,10 @@ extension ViewController {
         view.addSubview(commentView)
 
         // Need to add constraints for commentView
+        commentView.snp.makeConstraints { make in
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+            make.left.right.equalToSuperview().inset(24)
+        }
 
         commentLabel.font = .systemFont(ofSize: 14.0, weight: .regular)
         commentLabel.textColor = .systemGray
@@ -85,8 +90,11 @@ extension ViewController {
         commentView.addSubview(commentLabel)
 
         // Need to add constraints for commentLabel
+        commentView.snp.makeConstraints { make in
+            make.top.bottom.left.right.equalTo(commentView).inset(16)
+        }
 
-        return commentView
+        //return commentView
     }
 
     func updateCommentLabel(value: Int) {
