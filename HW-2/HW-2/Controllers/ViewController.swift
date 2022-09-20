@@ -41,7 +41,7 @@ extension ViewController {
         incrementButton.translatesAutoresizingMaskIntoConstraints = false
         incrementButton.snp.makeConstraints { make in
             make.height.equalTo(48)
-            make.centerY.equalTo(self.view.snp.centerY).offset(100)
+            make.centerY.equalTo(self.view.snp.centerY).offset(170)
             make.left.right.equalToSuperview().inset(30)
         }
 
@@ -57,7 +57,7 @@ extension ViewController {
 
         valueLabel.translatesAutoresizingMaskIntoConstraints = false
         valueLabel.snp.makeConstraints { make in
-            make.bottom.equalTo(incrementButton.snp.top).inset(-16)
+            make.bottom.equalTo(incrementButton.snp.top).inset(-5)
             make.centerX.equalToSuperview().inset(20)
         }
     }
