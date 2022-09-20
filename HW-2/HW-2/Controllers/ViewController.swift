@@ -6,6 +6,8 @@ final class ViewController: UIViewController {
     private let commentView = UIView()
     private let commentLabel = UILabel()
     private let valueLabel = UILabel()
+    
+    private let imageView = UIImageView()
 
     private let incrementButton = UIButton()
 
@@ -18,6 +20,7 @@ final class ViewController: UIViewController {
         setupValueLabel()
         setupCommentView()
         setupMenuButtons()
+        setupImageView()
 
         self.view.backgroundColor = .systemBlue
     }
@@ -107,6 +110,7 @@ extension ViewController {
             switch self.value {
             case 0...5:
                 self.commentLabel.text = "🔥🔥🔥🔥🔥🔥🔥🔥"
+                self.imageView.
             case 5...10:
                 self.commentLabel.text = "💥💥💥💥💥💥💥💥"
             case 10...15:
@@ -158,6 +162,16 @@ extension ViewController {
         buttonsSV.snp.makeConstraints { make in
             make.left.right.equalToSuperview().inset(24)
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).inset(24)
+        }
+    }
+    
+    private func setupImageView() {
+        self.view.addSubview(imageView)
+        
+        imageView.snp.makeConstraints { make in
+            make.size.equalTo(CGSize(width: 200, height: 200))
+            make.top.equalTo(commentView.snp.bottom).offset(10)
+            make.center.equalToSuperview()
         }
     }
 
