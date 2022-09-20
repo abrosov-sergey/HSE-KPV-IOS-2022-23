@@ -41,7 +41,7 @@ extension ViewController {
         incrementButton.translatesAutoresizingMaskIntoConstraints = false
         incrementButton.snp.makeConstraints { make in
             make.height.equalTo(48)
-            make.centerY.equalToSuperview()
+            make.centerY.equalTo(self.view.snp.centerY).offset(100)
             make.left.right.equalToSuperview().inset(30)
         }
 
@@ -71,6 +71,7 @@ extension ViewController {
 
     private func updateUI() {
         self.valueLabel.text = "\(self.value)"
+        self.imageView.image = UIImage(named: "\((self.value - 1) % 7)")
     }
 
     private func setupCommentView() /*-> UIView*/ {
@@ -110,7 +111,6 @@ extension ViewController {
             switch self.value {
             case 0...5:
                 self.commentLabel.text = "🔥🔥🔥🔥🔥🔥🔥🔥"
-                self.imageView.
             case 5...10:
                 self.commentLabel.text = "💥💥💥💥💥💥💥💥"
             case 10...15:
@@ -164,14 +164,17 @@ extension ViewController {
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).inset(24)
         }
     }
-    
+
     private func setupImageView() {
+        imageView.layer.cornerRadius = 10
+
         self.view.addSubview(imageView)
-        
+
         imageView.snp.makeConstraints { make in
-            make.size.equalTo(CGSize(width: 200, height: 200))
+            make.height.equalTo(300)
+            make.left.right.equalToSuperview().inset(24)
             make.top.equalTo(commentView.snp.bottom).offset(10)
-            make.center.equalToSuperview()
+            make.centerX.equalToSuperview()
         }
     }
 
@@ -180,13 +183,14 @@ extension ViewController {
         value += 1
         incrementButton.isEnabled = false
         incrementButton.alpha = 0.7
+        updateUI()
 
-        UIView.animate(withDuration: 0.65, animations: {
+        UIView.animate(withDuration: 0.2, animations: {
             self.incrementButton.layer.shadowPath = UIBezierPath(rect: self.incrementButton.layer.bounds).cgPath
             self.incrementButton.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
             self.incrementButton.alpha = 1
 
-            self.updateUI()
+            
             self.updateCommentLabel()
         }) { _ in
             self.incrementButton.transform = CGAffineTransform(scaleX: 1, y: 1)

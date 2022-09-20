@@ -69,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				6328A25F28D5D5A300E50A89 /* ViewController.swift */,
+				634AB32A28D9BCDF005C7DD2 /* New Group */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -93,6 +94,13 @@
 				6328A25B28D5D5A300E50A89 /* AppDelegate.swift */,
 			);
 			path = Delegates;
+			sourceTree = "<group>";
+		};
+		634AB32A28D9BCDF005C7DD2 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
