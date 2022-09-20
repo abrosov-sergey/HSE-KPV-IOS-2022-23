@@ -110,13 +110,15 @@ extension ViewController {
                           animations: { [self] in
             switch self.value {
             case 0...5:
-                self.commentLabel.text = "🔥🔥🔥🔥🔥🔥🔥🔥"
-            case 5...10:
-                self.commentLabel.text = "💥💥💥💥💥💥💥💥"
-            case 10...15:
-                self.commentLabel.text = "✨✨✨✨✨✨✨✨"
-            case 15...40:
-                self.commentLabel.text = "🦦🦦🦦🦦🦦🦦🦦🦦"
+                self.commentLabel.text = "hello, dude, hit him 😂"
+            case 5...7:
+                self.commentLabel.text = "YOU KILLED HOMER 😵"
+            case 7...12:
+                self.commentLabel.text = "HE'S ALIVE, hooray!!!!!"
+            case 12...21:
+                self.commentLabel.text = "stop doing that 👿"
+            case 21...40:
+                self.commentLabel.text = "just kidding, keep going))"
             case 40...50:
                 self.commentLabel.text = "🎉🎉🎉🎉🎉🎉🎉🎉"
             case 50...60:
