@@ -11,6 +11,9 @@ final class ViewController: UIViewController {
     private let incrementButton = UIButton()
     
     private var sliders: [UISlider] = []
+    
+    private var colorButtonPressedCounter: Int = 0
+    private var smartButtonPressedCounter: Int = 0
 
     private var value: Int = 0
 
@@ -21,7 +24,6 @@ final class ViewController: UIViewController {
         setupValueLabel()
         setupCommentView()
         setupMenuButtons()
-        setupSliders()
 
         self.view.backgroundColor = .systemGray
     }
@@ -75,8 +77,6 @@ extension ViewController {
     }
 
     private func setupCommentView() /*-> UIView*/ {
-        
-
         commentView.backgroundColor = .white
         commentView.layer.cornerRadius = 12
 
@@ -165,6 +165,8 @@ extension ViewController {
             make.left.right.equalToSuperview().inset(24)
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).inset(24)
         }
+        
+        colorsButton.addTarget(self, action: #selector(colorButtonPressed), for: .allEvents)
     }
 
     private func setupSliders() {
@@ -180,6 +182,7 @@ extension ViewController {
             make.height.equalTo(48)
         }
         sliders[0].thumbTintColor = .systemRed
+        sliders[0].tintColor = .systemRed
         
         sliders[1].snp.makeConstraints { make in
             make.top.equalTo(sliders[0].snp.bottom).offset(30)
@@ -187,6 +190,7 @@ extension ViewController {
             make.height.equalTo(48)
         }
         sliders[1].thumbTintColor = .systemGreen
+        sliders[1].tintColor = .systemGreen
         
         sliders[2].snp.makeConstraints { make in
             make.top.equalTo(sliders[1].snp.bottom).offset(30)
@@ -194,6 +198,7 @@ extension ViewController {
             make.height.equalTo(48)
         }
         sliders[2].thumbTintColor = .systemBlue
+        sliders[2].tintColor = .systemBlue
         
         for iterator in 0..<3 {
             sliders[iterator].addTarget(self, action: #selector(slidersSlided), for: .allEvents)
@@ -224,9 +229,21 @@ extension ViewController {
 
     }
     
-//    @objc func colorButtonPressed() {
-//        setupSliders()
-//    }
+    @objc func colorButtonPressed() {
+        if (colorButtonPressedCounter == 0) {
+            setupSliders()
+        } else if (colorButtonPressedCounter % 2 == 1) {
+            for iterator in 0..<3 {
+                sliders[iterator].isHidden = true
+            }
+        } else if (colorButtonPressedCounter % 2 == 0) {
+            for iterator in 0..<3 {
+                sliders[iterator].isHidden = false
+            }
+        }
+        
+        colorButtonPressedCounter += 1
+    }
     
     @objc func slidersSlided(_ sender: UISlider) {
         let finishColor: UIColor = UIColor(red: Int(255 * sliders[0].value),
