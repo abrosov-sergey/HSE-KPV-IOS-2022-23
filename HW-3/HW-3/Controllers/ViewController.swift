@@ -4,12 +4,13 @@ import SnapKit
 final class ViewController: UIViewController {
 
     private let commentView = UIView()
+    
     private let commentLabel = UILabel()
     private let valueLabel = UILabel()
-    
-    private let imageView = UIImageView()
 
     private let incrementButton = UIButton()
+    
+    private var sliders: [UISlider] = []
 
     private var value: Int = 0
 
@@ -20,9 +21,9 @@ final class ViewController: UIViewController {
         setupValueLabel()
         setupCommentView()
         setupMenuButtons()
-        setupImageView()
+        setupSliders()
 
-        self.view.backgroundColor = .systemBlue
+        self.view.backgroundColor = .systemGray
     }
 
 }
@@ -41,7 +42,7 @@ extension ViewController {
         incrementButton.translatesAutoresizingMaskIntoConstraints = false
         incrementButton.snp.makeConstraints { make in
             make.height.equalTo(48)
-            make.centerY.equalTo(self.view.snp.centerY).offset(170)
+            make.centerY.equalTo(self.view.snp.centerY)
             make.left.right.equalToSuperview().inset(30)
         }
 
@@ -71,7 +72,6 @@ extension ViewController {
 
     private func updateUI() {
         self.valueLabel.text = "\(self.value)"
-        self.imageView.image = UIImage(named: "\((self.value - 1) % 7)")
     }
 
     private func setupCommentView() /*-> UIView*/ {
@@ -167,16 +167,36 @@ extension ViewController {
         }
     }
 
-    private func setupImageView() {
-        imageView.layer.cornerRadius = 10
-
-        self.view.addSubview(imageView)
-
-        imageView.snp.makeConstraints { make in
-            make.height.equalTo(300)
-            make.left.right.equalToSuperview().inset(24)
-            make.top.equalTo(commentView.snp.bottom).offset(10)
-            make.centerX.equalToSuperview()
+    private func setupSliders() {
+        for iterator in 0..<3 {
+            sliders.append(UISlider())
+            self.view.addSubview(sliders[iterator])
+            sliders[iterator].tag = iterator
+        }
+        
+        sliders[0].snp.makeConstraints { make in
+            make.top.equalTo(incrementButton.snp.bottom).offset(30)
+            make.left.right.equalToSuperview().inset(30)
+            make.height.equalTo(48)
+        }
+        sliders[0].thumbTintColor = .systemRed
+        
+        sliders[1].snp.makeConstraints { make in
+            make.top.equalTo(sliders[0].snp.bottom).offset(30)
+            make.left.right.equalToSuperview().inset(30)
+            make.height.equalTo(48)
+        }
+        sliders[1].thumbTintColor = .systemGreen
+        
+        sliders[2].snp.makeConstraints { make in
+            make.top.equalTo(sliders[1].snp.bottom).offset(30)
+            make.left.right.equalToSuperview().inset(30)
+            make.height.equalTo(48)
+        }
+        sliders[2].thumbTintColor = .systemBlue
+        
+        for iterator in 0..<3 {
+            sliders[iterator].addTarget(self, action: #selector(slidersSlided), for: .allEvents)
         }
     }
 
@@ -202,5 +222,17 @@ extension ViewController {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
 
+    }
+    
+//    @objc func colorButtonPressed() {
+//        setupSliders()
+//    }
+    
+    @objc func slidersSlided(_ sender: UISlider) {
+        let finishColor: UIColor = UIColor(red: Int(255 * sliders[0].value),
+                                           green: Int(255 * sliders[1].value),
+                                           blue: Int(255 * sliders[2].value))
+        
+        self.view.backgroundColor = finishColor
     }
 }
