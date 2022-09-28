@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 
-final class ViewController: UIViewController {
+final class ViewController: UIViewController, UIColorPickerViewControllerDelegate {
 
     private let commentView = UIView()
     
@@ -13,7 +13,6 @@ final class ViewController: UIViewController {
     private var sliders: [UISlider] = []
     
     private var colorButtonPressedCounter: Int = 0
-    private var smartButtonPressedCounter: Int = 0
 
     private var value: Int = 0
 
@@ -141,7 +140,7 @@ extension ViewController {
         button.setTitle(title, for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 12
-        button.titleLabel?.font = .systemFont(ofSize: 35.0, weight: .medium)
+        button.titleLabel?.font = .systemFont(ofSize: 20.0, weight: .medium)
         button.backgroundColor = .white
         button.heightAnchor.constraint(equalTo: button.widthAnchor).isActive = true
 
@@ -150,10 +149,11 @@ extension ViewController {
 
     private func setupMenuButtons() {
         let colorsButton = makeMenuButton(title: "🎨")
+        let smartColorButton = makeMenuButton(title: "Smart🎨")
         let notesButton = makeMenuButton(title: "📝")
         let newsButton = makeMenuButton(title: "📰")
 
-        let buttonsSV = UIStackView(arrangedSubviews: [colorsButton, notesButton, newsButton])
+        let buttonsSV = UIStackView(arrangedSubviews: [colorsButton, smartColorButton, notesButton, newsButton])
 
         buttonsSV.spacing = 12
         buttonsSV.axis = .horizontal
@@ -166,7 +166,8 @@ extension ViewController {
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).inset(24)
         }
         
-        colorsButton.addTarget(self, action: #selector(colorButtonPressed), for: .allEvents)
+        colorsButton.addTarget(self, action: #selector(colorButtonPressed), for: .touchUpInside)
+        smartColorButton.addTarget(self, action: #selector(smartColorButtonPressed), for: .touchUpInside)
     }
 
     private func setupSliders() {
@@ -243,6 +244,22 @@ extension ViewController {
         }
         
         colorButtonPressedCounter += 1
+    }
+    
+    @objc func smartColorButtonPressed() {
+        let colorPickerVC = UIColorPickerViewController()
+        colorPickerVC.delegate = self
+        present(colorPickerVC, animated: true)
+    }
+    
+    func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
+        let color = viewController.selectedColor
+        view.backgroundColor = color
+    }
+    
+    func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
+        let color = viewController.selectedColor
+        view.backgroundColor = color
     }
     
     @objc func slidersSlided(_ sender: UISlider) {
