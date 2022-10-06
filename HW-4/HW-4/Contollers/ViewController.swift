@@ -23,7 +23,9 @@ final class ViewController: UIViewController, UIColorPickerViewControllerDelegat
         setupValueLabel()
         setupCommentView()
         setupMenuButtons()
-
+        
+        
+        
         self.view.backgroundColor = .systemGray
     }
 

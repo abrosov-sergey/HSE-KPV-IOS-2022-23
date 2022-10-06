@@ -12,6 +12,8 @@
 		631973DC28EDD92F0024AC6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 631973DB28EDD92F0024AC6D /* Assets.xcassets */; };
 		631973DF28EDD92F0024AC6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 631973DD28EDD92F0024AC6D /* LaunchScreen.storyboard */; };
 		63E9A71228EF4BB80011A552 /* ExtUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E9A71128EF4BB80011A552 /* ExtUIColor.swift */; };
+		63E9A71528EF4E990011A552 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 63E9A71428EF4E990011A552 /* SnapKit */; };
+		63E9A71728EF50DD0011A552 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E9A71628EF50DD0011A552 /* NotesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,7 @@
 		631973DE28EDD92F0024AC6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		631973E028EDD92F0024AC6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63E9A71128EF4BB80011A552 /* ExtUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtUIColor.swift; sourceTree = "<group>"; };
+		63E9A71628EF50DD0011A552 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63E9A71528EF4E990011A552 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				631973D628EDD92C0024AC6D /* ViewController.swift */,
+				63E9A71628EF50DD0011A552 /* NotesViewController.swift */,
 			);
 			path = Contollers;
 			sourceTree = "<group>";
@@ -104,6 +109,9 @@
 			dependencies = (
 			);
 			name = "HW-4";
+			packageProductDependencies = (
+				63E9A71428EF4E990011A552 /* SnapKit */,
+			);
 			productName = "HW-4";
 			productReference = 631973CF28EDD92C0024AC6D /* HW-4.app */;
 			productType = "com.apple.product-type.application";
@@ -132,6 +140,9 @@
 				Base,
 			);
 			mainGroup = 631973C628EDD92C0024AC6D;
+			packageReferences = (
+				63E9A71328EF4E990011A552 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 631973D028EDD92C0024AC6D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -158,6 +169,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63E9A71728EF50DD0011A552 /* NotesViewController.swift in Sources */,
 				631973D728EDD92C0024AC6D /* ViewController.swift in Sources */,
 				631973D328EDD92C0024AC6D /* AppDelegate.swift in Sources */,
 				63E9A71228EF4BB80011A552 /* ExtUIColor.swift in Sources */,
@@ -368,6 +380,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		63E9A71328EF4E990011A552 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		63E9A71428EF4E990011A552 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63E9A71328EF4E990011A552 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 631973C728EDD92C0024AC6D /* Project object */;
 }
