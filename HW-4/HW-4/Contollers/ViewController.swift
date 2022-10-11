@@ -170,6 +170,7 @@ extension ViewController {
         
         colorsButton.addTarget(self, action: #selector(colorButtonPressed), for: .touchUpInside)
         smartColorButton.addTarget(self, action: #selector(smartColorButtonPressed), for: .touchUpInside)
+        notesButton.addTarget(self, action: #selector(notesButtonPressed), for: .touchUpInside)
     }
 
     private func setupSliders() {
@@ -270,5 +271,9 @@ extension ViewController {
                                            blue: Int(255 * sliders[2].value))
         
         self.view.backgroundColor = finishColor
+    }
+    
+    @objc func notesButtonPressed() {
+        present(NotesViewController(), animated: true)
     }
 }
