@@ -9,6 +9,14 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    private let newsButton: UIButton = {
+        let button = UIButton()
+        
+        button.setImage(<#T##image: UIImage?##UIImage?#>, for: <#T##UIControl.State#>)
+        
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBlue
