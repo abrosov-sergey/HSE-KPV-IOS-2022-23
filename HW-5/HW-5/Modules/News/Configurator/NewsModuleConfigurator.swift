@@ -33,4 +33,3 @@ final class NewsModuleConfigurator {
     return (view, presenter)
   }
 }
-

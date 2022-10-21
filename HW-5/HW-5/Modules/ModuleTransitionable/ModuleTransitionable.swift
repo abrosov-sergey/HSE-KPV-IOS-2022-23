@@ -4,7 +4,7 @@ import UIKit
 protocol ModuleTransitionable: AnyObject {
   func showModule(_ module: UIViewController)
   func dismissView(animated: Bool, completion: (() -> Void)?)
-  func dismissModal(animated: Bool, completion: (() -> Void)?) //dismiss all stack view controllers
+  func dismissModal(animated: Bool, completion: (() -> Void)?) // dismiss all stack view controllers
   func dismissAndPresentModule(
     _ module: UIViewController,
     dismissAnimated dismiss: Bool,

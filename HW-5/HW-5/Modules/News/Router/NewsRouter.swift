@@ -23,4 +23,3 @@ final class NewsRouter {
 extension NewsRouter: NewsRouterInput {
 
 }
-

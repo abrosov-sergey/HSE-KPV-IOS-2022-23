@@ -16,11 +16,9 @@ protocol NewsViewOutput: AnyObject {
   func viewDidLoad()
 }
 
-
 final class NewsViewController: UIViewController, ModuleTransitionable {
 
   // MARK: - Outlets
-
 
   // MARK: - Properties
 
@@ -34,7 +32,6 @@ final class NewsViewController: UIViewController, ModuleTransitionable {
   }
 
   // MARK: - Actions
-
 
   // MARK: - Setup
 
