@@ -11,6 +11,10 @@
 		631973D728EDD92C0024AC6D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631973D628EDD92C0024AC6D /* ViewController.swift */; };
 		631973DC28EDD92F0024AC6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 631973DB28EDD92F0024AC6D /* Assets.xcassets */; };
 		631973DF28EDD92F0024AC6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 631973DD28EDD92F0024AC6D /* LaunchScreen.storyboard */; };
+		632F718628F5AC39009EF6D1 /* NoteCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632F718528F5AC39009EF6D1 /* NoteCells.swift */; };
+		632F719128F5B42B009EF6D1 /* NoteModelConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632F719028F5B42B009EF6D1 /* NoteModelConfigurator.swift */; };
+		632F719328F5B471009EF6D1 /* NotePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632F719228F5B471009EF6D1 /* NotePresenter.swift */; };
+		632F719528F5B4A0009EF6D1 /* NoteRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632F719428F5B4A0009EF6D1 /* NoteRouter.swift */; };
 		63E9A71228EF4BB80011A552 /* ExtUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E9A71128EF4BB80011A552 /* ExtUIColor.swift */; };
 		63E9A71528EF4E990011A552 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 63E9A71428EF4E990011A552 /* SnapKit */; };
 		63E9A71728EF50DD0011A552 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E9A71628EF50DD0011A552 /* NotesViewController.swift */; };
@@ -23,6 +27,10 @@
 		631973DB28EDD92F0024AC6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		631973DE28EDD92F0024AC6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		631973E028EDD92F0024AC6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		632F718528F5AC39009EF6D1 /* NoteCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCells.swift; sourceTree = "<group>"; };
+		632F719028F5B42B009EF6D1 /* NoteModelConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteModelConfigurator.swift; sourceTree = "<group>"; };
+		632F719228F5B471009EF6D1 /* NotePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotePresenter.swift; sourceTree = "<group>"; };
+		632F719428F5B4A0009EF6D1 /* NoteRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRouter.swift; sourceTree = "<group>"; };
 		63E9A71128EF4BB80011A552 /* ExtUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtUIColor.swift; sourceTree = "<group>"; };
 		63E9A71628EF50DD0011A552 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,23 +66,99 @@
 		631973D128EDD92C0024AC6D /* HW-4 */ = {
 			isa = PBXGroup;
 			children = (
+				632F718B28F5B2CD009EF6D1 /* Apple's support files */,
+				632F718A28F5B2C7009EF6D1 /* Helpers */,
+				632F718728F5B249009EF6D1 /* Modules */,
 				63E9A71028EF4B600011A552 /* Extensions */,
-				63E9A70F28EF4B510011A552 /* Delegates */,
-				63E9A70E28EF4B400011A552 /* Contollers */,
-				631973DB28EDD92F0024AC6D /* Assets.xcassets */,
-				631973DD28EDD92F0024AC6D /* LaunchScreen.storyboard */,
 				631973E028EDD92F0024AC6D /* Info.plist */,
 			);
 			path = "HW-4";
 			sourceTree = "<group>";
 		};
-		63E9A70E28EF4B400011A552 /* Contollers */ = {
+		632F718428F5AC10009EF6D1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				632F718528F5AC39009EF6D1 /* NoteCells.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		632F718728F5B249009EF6D1 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				63E9A70F28EF4B510011A552 /* Delegates */,
+				632F718928F5B286009EF6D1 /* Notes */,
+				632F718828F5B271009EF6D1 /* Main */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		632F718828F5B271009EF6D1 /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				631973D628EDD92C0024AC6D /* ViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		632F718928F5B286009EF6D1 /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				632F718F28F5B353009EF6D1 /* Configurator */,
+				632F718E28F5B34E009EF6D1 /* Router */,
+				632F718D28F5B347009EF6D1 /* Presenter */,
+				632F718C28F5B33F009EF6D1 /* View */,
+				632F718428F5AC10009EF6D1 /* Model */,
+			);
+			path = Notes;
+			sourceTree = "<group>";
+		};
+		632F718A28F5B2C7009EF6D1 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		632F718B28F5B2CD009EF6D1 /* Apple's support files */ = {
+			isa = PBXGroup;
+			children = (
+				631973DD28EDD92F0024AC6D /* LaunchScreen.storyboard */,
+				631973DB28EDD92F0024AC6D /* Assets.xcassets */,
+			);
+			path = "Apple's support files";
+			sourceTree = "<group>";
+		};
+		632F718C28F5B33F009EF6D1 /* View */ = {
+			isa = PBXGroup;
+			children = (
 				63E9A71628EF50DD0011A552 /* NotesViewController.swift */,
 			);
-			path = Contollers;
+			path = View;
+			sourceTree = "<group>";
+		};
+		632F718D28F5B347009EF6D1 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				632F719228F5B471009EF6D1 /* NotePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		632F718E28F5B34E009EF6D1 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				632F719428F5B4A0009EF6D1 /* NoteRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		632F718F28F5B353009EF6D1 /* Configurator */ = {
+			isa = PBXGroup;
+			children = (
+				632F719028F5B42B009EF6D1 /* NoteModelConfigurator.swift */,
+			);
+			path = Configurator;
 			sourceTree = "<group>";
 		};
 		63E9A70F28EF4B510011A552 /* Delegates */ = {
@@ -170,8 +254,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				63E9A71728EF50DD0011A552 /* NotesViewController.swift in Sources */,
+				632F718628F5AC39009EF6D1 /* NoteCells.swift in Sources */,
+				632F719528F5B4A0009EF6D1 /* NoteRouter.swift in Sources */,
 				631973D728EDD92C0024AC6D /* ViewController.swift in Sources */,
 				631973D328EDD92C0024AC6D /* AppDelegate.swift in Sources */,
+				632F719128F5B42B009EF6D1 /* NoteModelConfigurator.swift in Sources */,
+				632F719328F5B471009EF6D1 /* NotePresenter.swift in Sources */,
 				63E9A71228EF4BB80011A552 /* ExtUIColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
