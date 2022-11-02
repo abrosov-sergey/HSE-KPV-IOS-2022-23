@@ -21,11 +21,24 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemBlue
+        view.backgroundColor = .systemGray
         
         makeConstraits()
     }
 
+    // MARK: - Actions
+    
+    @objc
+    private func imageButtonPressed() {
+        //showNews
+        // ???
+    }
+    
+    // MARK: - Setup
+    
+    private func SetupUI() {
+        newsButton.addTarget(self, action: #selector(imageButtonPressed), for: .touchUpInside)
+    }
 }
 
 extension ViewController {

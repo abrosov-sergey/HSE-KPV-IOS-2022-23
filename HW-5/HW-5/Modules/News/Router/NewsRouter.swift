@@ -8,7 +8,7 @@
 import UIKit
 
 protocol NewsRouterInput {
-
+    func showNews(model: NewsViewController)
 }
 
 final class NewsRouter {
@@ -21,5 +21,9 @@ final class NewsRouter {
 // MARK: - NewsRouterInput
 
 extension NewsRouter: NewsRouterInput {
-
+    func showNews(model: NewsViewController) {
+        let module = NewsModuleConfigurator().configure()
+        //module.input.setModel(model)
+        view?.push(module: module.view, animated: true)
+    }
 }
