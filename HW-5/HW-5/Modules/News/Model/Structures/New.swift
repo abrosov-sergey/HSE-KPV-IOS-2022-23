@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct News {
+struct New {
     var title: String
     var image: UIImage
     var text: String

@@ -1,6 +1,6 @@
 import UIKit
 
-class ItemCell: UITableViewCell {
+class NewTableCell: UITableViewCell {
 
     private var newsLabel: UILabel = {
         let label = UILabel()
@@ -23,12 +23,6 @@ class ItemCell: UITableViewCell {
         return textField
     }()
     
-//    init(newsLabel: UILabel, newsImage: UIImage, textField: UITextField) {
-//        self.newsLabel = newsLabel
-//        self.newsImage = newsImage
-//        self.textField = textField
-//    }
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
@@ -37,15 +31,20 @@ class ItemCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func set(new: New) {
+        newsImage.image = new.image
+        newsLabel.text = new.title
+        textField.text = new.text
+    }
+    
     private func setupUI() {
         
         makeConstraints()
         
-        
     }
 }
 
-extension ItemCell {
+extension NewTableCell {
     private func makeConstraints() {
         addSubview(newsLabel)
         addSubview(newsImage)
@@ -69,11 +68,11 @@ extension ItemCell {
         
         // MARK: - textField
         
-        newsLabel.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.leading.equalToSuperview().inset(12)
-            make.height.equalTo(80)
-            make.width.equalTo(80 * 16 / 9)
-        }
+//        newsLabel.snp.makeConstraints { make in
+//            make.centerY.equalToSuperview()
+//            make.leading.equalToSuperview().inset(12)
+//            make.height.equalTo(80)
+//            make.width.equalTo(80 * 16 / 9)
+//        }
     }
 }
