@@ -20,10 +20,9 @@ final class NewsViewController: UIViewController, ModuleTransitionable {
     // MARK: - Outlets
     
     private var mainTableView: UITableView = {
-        let tableView = UITableView()
+        let tableView = UITableView.init(frame: .zero, style: UITableView.Style.grouped)
         tableView.backgroundColor = .systemGray
-        tableView.rowHeight = 100
-        tableView.register(NewTableCell.self, forCellReuseIdentifier: NameOfCells.newCell)
+        tableView.rowHeight = 200
         return tableView
     }()
     
@@ -41,6 +40,8 @@ final class NewsViewController: UIViewController, ModuleTransitionable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = .systemRed
         
         output?.viewDidLoad()
         
@@ -62,14 +63,16 @@ final class NewsViewController: UIViewController, ModuleTransitionable {
         
         makeConstraints()
         
+        // MARK: - newsList
+        
+        newsList = getArrayOfNewCells()
+        
         // MARK: - mainTableView
         
         mainTableView.delegate = self
         mainTableView.dataSource = self
+        mainTableView.register(NewTableCell.self, forCellReuseIdentifier: NameOfCells.newCell)
         
-        // MARK: - newsList
-        
-        newsList = getArrayOfNewCells()
     }
     
     private func setupLocalization() {
@@ -81,8 +84,8 @@ final class NewsViewController: UIViewController, ModuleTransitionable {
 
 extension NewsViewController {
     func makeConstraints() {
-        // MARK: - mainTaibleView
-        view.addSubview(mainTableView)
+        // MARK: - mainTableView
+        self.view.addSubview(mainTableView)
         
         mainTableView.snp.makeConstraints { make in
             make.top.bottom.leading.trailing.equalToSuperview()
@@ -123,13 +126,13 @@ extension NewsViewController: UITableViewDataSource {
 
 extension NewsViewController {
     private func getArrayOfNewCells() -> [New] {
-        let new1 = New(title: "mister crabs", image: UIImage(named: "mister-crabs")!, text: "today mister crabs erned 100$")
-        let new2 = New(title: "mister crabs", image: UIImage(named: "mister-crabs")!, text: "today mister crabs erned 100$")
-        let new3 = New(title: "mister crabs", image: UIImage(named: "mister-crabs")!, text: "today mister crabs erned 100$")
-        let new4 = New(title: "mister crabs", image: UIImage(named: "mister-crabs")!, text: "today mister crabs erned 100$")
-        let new5 = New(title: "mister crabs", image: UIImage(named: "mister-crabs")!, text: "today mister crabs erned 100$")
-        let new6 = New(title: "mister crabs", image: UIImage(named: "mister-crabs")!, text: "today mister crabs erned 100$")
+        let new1 = New(title: "Mr. Krabs", image: UIImage(named: "mister-krabs")!, text: "Today Mr. Krabs earned 100$")
+//        let new2 = New(title: "mister crabs", image: UIImage(named: "mister-crabs")!, text: "today mister crabs erned 100$")
+//        let new3 = New(title: "mister crabs", image: UIImage(named: "mister-crabs")!, text: "today mister crabs erned 100$")
+//        let new4 = New(title: "mister crabs", image: UIImage(named: "mister-crabs")!, text: "today mister crabs erned 100$")
+//        let new5 = New(title: "mister crabs", image: UIImage(named: "mister-crabs")!, text: "today mister crabs erned 100$")
+//        let new6 = New(title: "mister crabs", image: UIImage(named: "mister-crabs")!, text: "today mister crabs erned 100$")
         
-        return [new1, new2, new3, new4, new5, new6]
+        return [new1, new1, new1, new1, new1, new1]
     }
 }
