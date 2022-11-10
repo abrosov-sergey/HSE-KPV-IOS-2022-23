@@ -21,7 +21,6 @@ final class NewsViewController: UIViewController, ModuleTransitionable {
     
     private var mainTableView: UITableView = {
         let tableView = UITableView.init(frame: .zero, style: UITableView.Style.grouped)
-        tableView.backgroundColor = .systemGray
         tableView.rowHeight = 200
         return tableView
     }()

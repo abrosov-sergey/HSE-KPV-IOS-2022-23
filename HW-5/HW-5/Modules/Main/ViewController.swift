@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 final class ViewController: UIViewController {
-
+    
     private let newsButton: UIButton = {
         let button = UIButton()
 
@@ -21,22 +21,24 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Новости"
+        
         view.backgroundColor = .systemGray
         
         makeConstraits()
+        setupUI()
     }
 
     // MARK: - Actions
     
     @objc
     private func imageButtonPressed() {
-        //showNews
-        // ???
+        navigationController?.pushViewController(NewsViewController(), animated: true)
     }
     
     // MARK: - Setup
     
-    private func SetupUI() {
+    private func setupUI() {
         newsButton.addTarget(self, action: #selector(imageButtonPressed), for: .touchUpInside)
     }
 }
