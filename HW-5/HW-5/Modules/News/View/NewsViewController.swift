@@ -49,6 +49,10 @@ final class NewsViewController: UIViewController, ModuleTransitionable {
     
     // MARK: - Actions
     
+    @objc
+    private func rightItemTapped() {
+        
+    }
     
     // MARK: - Setup
     
@@ -57,6 +61,9 @@ final class NewsViewController: UIViewController, ModuleTransitionable {
         // MARK: - NewsViewController
         
         title = "News"
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "refresh-icon"), style: .done, target: self, action: #selector(rightItemTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.counterclockwise"), style: .done, target: self, action: #selector(rightItemTapped))
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Refresh", style: .done, target: self, action: #selector(rightItemTapped))
         
         // MARK: - Constraints
         
