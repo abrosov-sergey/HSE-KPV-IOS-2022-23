@@ -8,7 +8,7 @@
 import UIKit
 
 protocol NewRouterInput {
-
+    // то что презентер вызывает у роутера (наш презентер вызывает ттут функции)
 }
 
 final class NewRouter {

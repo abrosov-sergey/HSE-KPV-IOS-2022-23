@@ -14,6 +14,10 @@ protocol NewsViewInput: AnyObject {
 
 protocol NewsViewOutput: AnyObject {
     func viewDidLoad()
+    
+    func didSelectCell(index: Int)
+    
+    var newsList: [New] { get }
 }
 
 final class NewsViewController: UIViewController, ModuleTransitionable {
@@ -24,9 +28,7 @@ final class NewsViewController: UIViewController, ModuleTransitionable {
         tableView.rowHeight = 200
         return tableView
     }()
-    
-    private var newsList: [New] = []
-    
+        
     struct NameOfCells {
         static let newCell = "NewCell"
     }
@@ -71,8 +73,6 @@ final class NewsViewController: UIViewController, ModuleTransitionable {
         
         // MARK: - newsList
         
-        newsList = getArrayOfNewCells()
-        
         // MARK: - mainTableView
         
         mainTableView.delegate = self
@@ -109,20 +109,23 @@ extension NewsViewController: NewsViewInput {
 
 extension NewsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("tapped me")
+        let selectedCell = indexPath.row
+    
+//        navigationController?.pushViewController(NewViewController(), animated: true)
+        output?.didSelectCell(index: selectedCell)
     }
 }
 
 extension NewsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return newsList.count
+        return output?.newsList.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: NameOfCells.newCell) as! NewTableCell
-        let new = newsList[indexPath.row]
+        let new = output?.newsList[indexPath.row]
          
-        cell.set(new: new)
+        cell.set(new: new!)
 
         return cell
     }
@@ -131,14 +134,5 @@ extension NewsViewController: UITableViewDataSource {
 // MARK: - Info for newCells in TableView
 
 extension NewsViewController {
-    private func getArrayOfNewCells() -> [New] {
-        let new1 = New(title: "Mr. Krabs", image: UIImage(named: "mister-krabs")!, text: "Today Mr. Krabs earned 100$")
-//        let new2 = New(title: "mister crabs", image: UIImage(named: "mister-crabs")!, text: "today mister crabs erned 100$")
-//        let new3 = New(title: "mister crabs", image: UIImage(named: "mister-crabs")!, text: "today mister crabs erned 100$")
-//        let new4 = New(title: "mister crabs", image: UIImage(named: "mister-crabs")!, text: "today mister crabs erned 100$")
-//        let new5 = New(title: "mister crabs", image: UIImage(named: "mister-crabs")!, text: "today mister crabs erned 100$")
-//        let new6 = New(title: "mister crabs", image: UIImage(named: "mister-crabs")!, text: "today mister crabs erned 100$")
-        
-        return [new1, new1, new1, new1, new1, new1]
-    }
+    
 }

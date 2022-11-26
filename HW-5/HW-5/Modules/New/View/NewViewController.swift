@@ -9,10 +9,17 @@
 import UIKit
 
 protocol NewViewInput: AnyObject {
-    //var model: News { get set }
+    // те функции, которые презентор будет вызывать у этого вью
+    // обновить данные к примеру, то он вызовет их отсюда
+    // презентер вызывает у эотго вью
+    
+    var str: String { get set }
+//    var model: NewInfo { get set }
 }
 
 protocol NewViewOutput: AnyObject {
+    // вью вызывает у презентера
+    
     func viewDidLoad()
 }
 
@@ -20,9 +27,24 @@ protocol NewViewOutput: AnyObject {
 final class NewViewController: UIViewController, ModuleTransitionable {
     
     // MARK: - Outlets
-    //private var content: News(
     
     // MARK: - Properties
+    
+    private let newLabel: UILabel = {
+        let label = UILabel()
+        return label
+    }()
+    
+    private let newImage: UIImageView = {
+        let imageView = UIImageView()
+        return imageView
+    }()
+    
+    private let newText: UITextField = {
+        let textField = UITextField()
+        return textField
+    }()
+    
     
     var output: NewViewOutput?
     
@@ -30,7 +52,10 @@ final class NewViewController: UIViewController, ModuleTransitionable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemRed
         output?.viewDidLoad()
+        
+        print(str)
     }
     
     // MARK: - Actions
@@ -50,5 +75,19 @@ final class NewViewController: UIViewController, ModuleTransitionable {
 // MARK: - TroikaServiceViewInput
 
 extension NewViewController: NewViewInput {
+    var str: String {
+        get {
+            print("tapped str")
+            return "111"
+        }
+        set {
+            str = "191919"
+            print(str)
+        }
+    }
     
+//    var model: NewInfo {
+//        set { init( }
+//        get { return model }
+//    }
 }

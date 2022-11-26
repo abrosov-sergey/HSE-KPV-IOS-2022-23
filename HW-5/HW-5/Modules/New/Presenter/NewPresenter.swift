@@ -7,11 +7,13 @@
 //
 
 protocol NewModuleInput: AnyObject {
-    //func setModel(_ model: News)
+    // здесь будут функции, которые будут вызываться старым модулем у нового модуля (текущего модуля)
+    
+    func setModel(_ model: NewInfo)
 }
 
 protocol NewModuleOutput: AnyObject {
-    
+    // если мы что то меняем в ТЕКУЩЕМ модуле, то мы это передаем в ПРЕДЫДУЩИЙ МОДУЛЬ (любой котрый задам аутпут делегатом) который положу в аутпут тот и будет вызываться
 }
 
 final class NewPresenter {
@@ -37,8 +39,7 @@ extension NewPresenter: NewViewOutput {
 
 extension NewPresenter: NewModuleInput {
     // вызовется раньше чем вью дид лоэд 
-//    func setModel(_ model: News) {
-//        print(model)
-//    }
-    
+    func setModel(_ model: NewInfo) {
+        print(model)
+    }
 }
